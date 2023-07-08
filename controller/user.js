@@ -77,13 +77,16 @@ const login =(req,res)=>{
 }
 
 const logout =(req,res)=>{
-   //  res.cookie("tokenName",{
-   //    expires:new Date(Date.now())
+   res.cookie("tokenName",{
+      expires:new Date(Date.now())
+  })
+  res.status(200).json({
+      msg:"user LogedOut"
+  })
+   // res.clearCookie("tokenName")
+   //  res.status(200).json({
+   //    msg:"user logged out"
    //  })
-   res.clearCookie("tokenName")
-    res.status(200).json({
-      msg:"user logged out"
-    })
 }
 
 const auth = (req,res)=>{
