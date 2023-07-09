@@ -160,7 +160,7 @@ const login =(req,res)=>{
    const data = req.body
  
    const {email, password}=data;
-   
+   // console.log(data);
 
    const user = storedData.find((item)=>{
 
