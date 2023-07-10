@@ -158,20 +158,21 @@ const token = jwt.sign({user:email},secretKey,{expiresIn:3600})
 
 const login =(req,res)=>{
    const data = req.body
- 
+//  console.log("the user data",storedData);
    const {email, password}=data;
-   // console.log(data);
+   // console.log("data from front end",data);
 
    const user = storedData.find((item)=>{
-
-      item.email===email
-   return item
+// console.log("items of user",item.email, email);
+return item.email===email
+   
    })
 
    if(user){
       const validate = bcrypt.compareSync(data.password,user.password)
-      const token = jwt.sign({user:user.email},secretKey,{expiresIn:3600})
+      
       if(validate){
+         const token = jwt.sign({user:user.email},secretKey,{expiresIn:3600})
          const userInfo = {
             _id:user._id,
             name:user.name,
